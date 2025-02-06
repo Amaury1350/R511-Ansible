@@ -1,0 +1,6 @@
+- name: Installation de maria db et apache
+  hosts: webservers
+  become: true
+  tasks:
+    - include_tasks: tasks/installation_apache.yaml
+    - include_tasks: tasks/installation_mariadb.yaml
