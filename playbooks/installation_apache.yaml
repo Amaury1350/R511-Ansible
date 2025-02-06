@@ -1,7 +1,7 @@
 ---
 - name: Installation et configuration d'Apache
   hosts: webservers
-  become: true  # Exécute en tant que root
+  become: true 
 
   tasks:
     - name: Installer Apache

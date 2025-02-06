@@ -1,0 +1,17 @@
+---
+- name: Installation et configuration de mariadb-server
+  hosts: webservers
+  become: true 
+
+  tasks:
+    - name: Installer mariadb
+      apt:
+        name: mariadb-server
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: vérifier si mariadb-server est installé
+      service:
+        name: mariadb-server
+        state: started
+        enabled: true
