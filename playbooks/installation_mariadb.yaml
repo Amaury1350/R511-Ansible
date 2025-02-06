@@ -10,8 +10,8 @@
         state: present
       when: ansible_os_family == "Debian"
 
-    - name: vérifier si mariadb-server est installé
+    - name: vérifier si mariadb est installé
       service:
-        name: mariadb-server
+        name: mariadb
         state: started
         enabled: true
