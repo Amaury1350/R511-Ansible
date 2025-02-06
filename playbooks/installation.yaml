@@ -1,0 +1,17 @@
+---
+- name: Installation et configuration d'Apache
+  hosts: webservers
+  become: true  # Exécute en tant que root
+
+  tasks:
+    - name: Installer Apache
+      apt:
+        name: apache2
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: vérifier si Apache est installé
+      service:
+        name: apache2
+        state: started
+        enabled: true
