@@ -1,6 +1,6 @@
 ---
 - name: Include Apache installation
-  include_tasks: tasks/installation_apache2.yaml
+  include_tasks: installation_apache.yaml
 
 - name: Start Apache service
   service:
@@ -14,4 +14,4 @@
     dest: /var/www/html/index.html
     mode: '0644'
 
-- include_tasks: tasks/verification_apache2.yaml
+- include_tasks: verification_apache.yaml
