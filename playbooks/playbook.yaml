@@ -2,4 +2,4 @@
   hosts: webservers
   become: true
   tasks:
-    - include_role: roles/deploiement_apache2.yaml
+    - include_role: roles/defaults/main.yml
