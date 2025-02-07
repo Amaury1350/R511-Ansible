@@ -1,5 +1,5 @@
-- name: Installation de maria db et apache
+- name: Deploiement d'apache avec un index deja present
   hosts: webservers
   become: true
   tasks:
-    - include_role: tasks/deploiement_apache2.yaml
+    - include_role: roles/deploiement_apache2.yaml

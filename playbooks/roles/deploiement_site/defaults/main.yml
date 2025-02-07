@@ -1,9 +1,5 @@
 ---
-- name: Install Apache
-  apt:
-    name: apache2
-    state: present
-    update_cache: yes
+- include_tasks: tasks/installation_apache2.yaml
 
 - name: Start Apache service
   service:

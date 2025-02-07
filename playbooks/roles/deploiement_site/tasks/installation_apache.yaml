@@ -5,8 +5,3 @@
     state: present
   when: ansible_os_family == "Debian"
 
-- name: vérifier si Apache est installé
-  service:
-    name: apache2
-    state: started
-    enabled: true

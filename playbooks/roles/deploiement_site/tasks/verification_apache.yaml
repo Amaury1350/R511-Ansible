@@ -1,0 +1,6 @@
+---
+- name: vérifier si Apache est installé
+  service:
+    name: apache2
+    state: started
+    enabled: true
