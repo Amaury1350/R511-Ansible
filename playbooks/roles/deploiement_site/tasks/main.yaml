@@ -1,18 +1,17 @@
 ---
-tasks:
-  - name: Include Apache installation
-    include_tasks: tasks/installation_apache2.yaml
+- name: Include Apache installation
+  include_tasks: tasks/installation_apache2.yaml
 
-  - name: Start Apache service
-    service:
-      name: apache2
-      state: started
-      enabled: yes
+- name: Start Apache service
+  service:
+    name: apache2
+    state: started
+    enabled: yes
 
-  - name: Deploy index.html
-    copy:
-      src: files/index.html
-      dest: /var/www/html/index.html
-      mode: '0644'
+- name: Deploy index.html
+  copy:
+    src: files/index.html
+    dest: /var/www/html/index.html
+    mode: '0644'
 
-  - include_tasks: tasks/verification_apache2.yaml
+- include_tasks: tasks/verification_apache2.yaml
