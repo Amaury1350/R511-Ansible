@@ -1,6 +1,5 @@
 - name: Deploiement d'apache avec un index deja present
-  hosts: webservers
-  become: true
+  hosts: localhost
   tasks:
     - name: Include role deploiement_site
       include_role:
