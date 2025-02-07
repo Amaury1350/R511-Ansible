@@ -1,5 +1,5 @@
 - name: Deploiement d'apache avec un index deja present
-  hosts: localhost
+  hosts: 127.0.0.1
   tasks:
     - name: Include role deploiement_site
       include_role:
