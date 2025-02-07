@@ -14,4 +14,5 @@
     dest: /var/www/html/index.html
     mode: '0644'
 
-- include_tasks: verification_apache.yaml
+- name: Include Apache verification
+  include_tasks: verification_apache.yaml

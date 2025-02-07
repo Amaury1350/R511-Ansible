@@ -1,38 +1,39 @@
-Role Name
-=========
+Nom du rôle deploiement_site
+===========
 
-A brief description of the role goes here.
+Déploiement d'un site web avec Ansible.
 
-Requirements
-------------
+Prérequis
+---------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Les prérequis qui ne sont pas couverts par Ansible ou le rôle doivent être mentionnés ici. Par exemple, si le rôle utilise le module EC2, il peut être utile de mentionner que le package boto est requis.
 
-Role Variables
---------------
+Variables du rôle
+-----------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Une description des variables configurables pour ce rôle doit être incluse ici, y compris les variables dans defaults/main.yml, vars/main.yml, et toutes les variables qui peuvent/doivent être définies via des paramètres pour le rôle. Toute variable lue à partir d'autres rôles et/ou de la portée globale (par exemple, hostvars, group vars, etc.) doit également être mentionnée ici.
 
-Dependencies
-------------
+Dépendances
+-----------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+Une liste des autres rôles hébergés sur Galaxy doit être incluse ici, ainsi que tous les détails concernant les paramètres qui peuvent devoir être définis pour d'autres rôles, ou les variables utilisées par d'autres rôles.
 
-Example Playbook
-----------------
+Exemple de Playbook
+--------------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+Inclure un exemple de la façon d'utiliser votre rôle (par exemple, avec des variables passées en tant que paramètres) est toujours utile pour les utilisateurs :
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+  - hosts: serveurs
+    roles:
+     - { role: deploiement_site, x: 42 }
 
-License
+Licence
 -------
 
 BSD
 
-Author Information
-------------------
+Informations sur l'auteur
+--------------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Une section optionnelle pour que les auteurs du rôle incluent des informations de contact ou un site web (HTML non autorisé).
+
