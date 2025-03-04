@@ -1,7 +1,15 @@
 ---
 - name: Download Helm signing key
   ansible.builtin.command:
-    cmd: curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
+    cmd: curl https://baltocdn.com/helm/signing.asc
+
+- name: gpg
+  ansible.builtin.command:
+    cmd: gpg --dearmor
+
+- name: tee
+  ansible.builtin.command:
+    cmd: sudo tee /usr/share/keyrings/helm.gpg > /dev/null
 
 - name: Install apt-transport-https
   ansible.builtin.apt:
