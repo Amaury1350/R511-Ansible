@@ -1,0 +1,17 @@
+---
+- name: Download maj 
+  apt: 
+    name: update
+    state: present
+
+- name: Download k3s
+  ansible.builtin.command:
+    cmd: curl -sfL https://get.k3s.io | sh -
+
+- name: Vérification du démarrage de k3s
+  systemd:
+    name: k3s
+    enabled: yes
+    state: started
+
+
