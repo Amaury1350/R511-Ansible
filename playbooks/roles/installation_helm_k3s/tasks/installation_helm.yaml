@@ -1,11 +1,13 @@
-- name: Install helm if not exists
-  unarchive:
-    src: https://get.helm.sh/helm-v3.11.0-linux-amd64.tar.gz
-    dest: /usr/local/bin
-    extra_opts: "--strip-components=1"
-    owner: root
-    group: root
-    mode: 0755
-    remote_src: true
-  args:
+- name: Download Helm command line tool
+  ansible.builtin.uri:
+    url: https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+    return_content: true
+  register: helm_installer
+
+- name: Install Helm
+  ansible.builtin.command:
+    cmd: bash
+    stdin: "{{ helm_installer.content }}"
     creates: /usr/local/bin/helm
+  environment:
+    DESIRED_VERSION: "{{ helm_version | default('') }}"
