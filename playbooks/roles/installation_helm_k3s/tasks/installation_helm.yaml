@@ -3,6 +3,7 @@
     url: https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
     return_content: true
   register: helm_installer
+  when: "'master' in inventory_hostname"
 
 - name: Install Helm
   ansible.builtin.command:
@@ -11,3 +12,4 @@
     creates: /usr/local/bin/helm
   environment:
     DESIRED_VERSION: "{{ helm_version | default('') }}"
+  when: "'master' in inventory_hostname"
