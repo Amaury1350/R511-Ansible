@@ -1,8 +1,8 @@
 ---
-- name: Download maj 
-  apt: 
-    name: update
-    state: present
+- name: Update all packages to their latest version
+  ansible.builtin.apt:
+    name: "*"
+    state: latest
 
 - name: Download k3s
   ansible.builtin.command:
