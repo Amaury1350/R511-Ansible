@@ -1,5 +1,4 @@
 - name: Deploiement de k3s et helm
   hosts: 127.0.0.1
   roles:
-    - role: installation_helm
-    - role: installation_k3s  
+    - installation_helm_k3s
