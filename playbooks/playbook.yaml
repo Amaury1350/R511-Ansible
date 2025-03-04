@@ -6,7 +6,7 @@
     ansible_password: bonjour
     ansible_become_user: root
     ansible_become_password: bonjour
-    k3s_version: "v1.23.6+k3s1"  # Spécifiez la version de K3s à installer
     k3s_server_ip: "{{ hostvars['master'].ansible_host }}"
+    ansible_connection: ssh
   roles:
     - installation_helm_k3s
