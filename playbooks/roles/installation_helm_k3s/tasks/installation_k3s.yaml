@@ -4,14 +4,31 @@
     name: "*"
     state: latest
 
-- name: Download k3s
-  ansible.builtin.command:
-    cmd: curl -sfL https://get.k3s.io | sh -
+- name: Installer les dépendances nécessaires
+  apt:
+    name:
+      - curl
+    state: present
 
-- name: Vérification du démarrage de k3s
-  systemd:
-    name: k3s
-    enabled: yes
-    state: started
+- name: Installer K3s sur le serveur maître
+  command: "curl -sfL https://get.k3s.io | sh -s - server"
+  when: "'master' in inventory_hostname"
 
+- name: Obtenir le token de connexion du serveur maître
+  command: "sudo cat /var/lib/rancher/k3s/server/node-token"
+  register: k3s_token
+  when: "'master' in inventory_hostname"
+
+- name: Installer K3s sur les nœuds de travail
+  command: >
+    curl -sfL https://get.k3s.io | K3S_URL=https://{{ k3s_server_ip }}:6443 K3S_TOKEN={{ hostvars['master'].k3s_token.stdout }} sh -
+  when: "'worker' in inventory_hostname"
+
+- name: Configurer kubectl sur le serveur maître
+  command: "sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config"
+  when: "'master' in inventory_hostname"
+
+- name: Déployer un pod de test
+  command: "kubectl apply -f /path/to/test-pod.yaml"
+  when: "'master' in inventory_hostname"
 
