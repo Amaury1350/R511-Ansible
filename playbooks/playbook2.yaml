@@ -1,0 +1,10 @@
+- name: Deploiement de apache2
+  hosts: 127.0.0.1
+  become: true
+  vars:
+    ansible_user: root
+    ansible_password: bonjour
+    ansible_become_user: root
+    ansible_become_password: bonjour
+  roles:
+    - deploiement_site
