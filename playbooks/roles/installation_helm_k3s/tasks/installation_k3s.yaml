@@ -14,7 +14,7 @@
     state: present
 
 - name: Installer K3s sur le serveur maître
-  command: "curl -sfL https://get.k3s.io | sh -s - server"
+  shell: curl -sfL https://get.k3s.io | sh -s - server
   when: "'master' in inventory_hostname"
 
 - name: Obtenir le token de connexion du serveur maître
@@ -23,8 +23,7 @@
   when: "'master' in inventory_hostname"
 
 - name: Installer K3s sur les nœuds de travail
-  command: >
-    curl -sfL https://get.k3s.io | K3S_URL=https://{{ k3s_server_ip }}:6443 K3S_TOKEN={{ hostvars['master'].k3s_token.stdout }} sh -
+  shell: curl -sfL https://get.k3s.io | K3S_URL=https://{{ k3s_server_ip }}:6443 K3S_TOKEN={{ hostvars['master'].k3s_token.stdout }} sh -
   when: "'worker' in inventory_hostname"
 
 - name: Configurer kubectl sur le serveur maître
