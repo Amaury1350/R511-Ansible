@@ -1,7 +1,7 @@
 replicaCount: 2
 
 image:
-  repository: python
+  repository: nginx
   tag: "latest"
 
 service:

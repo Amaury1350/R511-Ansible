@@ -1,11 +1,11 @@
 - name: Installation de pod nginx avec des charts helm
-  block:
-    - name: Ajouter le repository stable
-      command: helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+  block:  
+    - name: Ajouter le repository grafana
+      command: helm repo add grafana https://grafana.github.io/helm-charts
 
     - name: Mettre à jour les repositories
       command: helm repo update
 
-    - name: Installer le pod nginx
-      command: helm install my-release ingress-nginx/ingress-nginx
+    - name: Installer le pod loki
+      command: helm install my-loki grafana/loki --version 6.27.0
   when: "'master' in inventory_hostname"
