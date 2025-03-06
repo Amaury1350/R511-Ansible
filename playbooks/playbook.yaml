@@ -4,7 +4,7 @@
   vars:    
     ansible_become_user: root
     ansible_become_password: bonjour
-    k3s_server_ip: "{{ hostvars['master'].ansible_host }}"
+    k3s_server_ip: 172.18.50.111
     ansible_connection: ssh
   roles:
     - installation_helm_k3s
