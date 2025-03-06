@@ -4,3 +4,6 @@
 
 - name: Include k3s installation
   include_tasks: installation_k3s.yaml
+
+- name: Include pods installation
+  include_tasks: installation_pods.yaml

@@ -1,0 +1,11 @@
+- name: Installation de pod nginx avec des charts helm
+  block:
+    - name: Ajouter le repository stable
+      command: helm repo add stable https://charts.helm.sh/stable
+
+    - name: Mettre à jour les repositories
+      command: helm repo update
+
+    - name: Installer le pod nginx
+      command: helm install my-release stable/nginx
+  when: "'master' in inventory_hostname"
