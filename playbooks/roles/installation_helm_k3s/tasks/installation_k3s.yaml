@@ -33,8 +33,3 @@
 - name: Configurer kubectl sur le serveur maître
   command: "sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config"
   when: "'master' in inventory_hostname"
-
-- name: Déployer un pod de test
-  command: "kubectl apply -f /path/to/test-pod.yaml"
-  when: "'master' in inventory_hostname"
-
