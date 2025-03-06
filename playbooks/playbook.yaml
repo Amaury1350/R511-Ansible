@@ -1,9 +1,7 @@
 - name: Deploiement de k3s et helm
   hosts: all
   become: true
-  vars:
-    ansible_user: root
-    ansible_password: bonjour
+  vars:    
     ansible_become_user: root
     ansible_become_password: bonjour
     k3s_server_ip: "{{ hostvars['master'].ansible_host }}"
