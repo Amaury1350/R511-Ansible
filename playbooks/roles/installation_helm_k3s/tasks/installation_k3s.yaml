@@ -1,12 +1,4 @@
 ---
-- name: Update all packages to their latest version
-  shell: apt-get update -y
-  become: true
-
-- name:  Upgrade all packages to their latest version
-  shell: apt-get upgrade -y
-  become: true
-
 - name: Installer les dépendances nécessaires
   apt:
     name:

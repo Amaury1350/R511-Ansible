@@ -2,9 +2,6 @@
 - name: Include helm installation
   include_tasks: installation_helm.yaml
 
-- name: Include docker installation
-  include_tasks: installation_docker.yaml
-
 - name: Include k3s installation
   include_tasks: installation_k3s.yaml
 
