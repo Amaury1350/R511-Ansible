@@ -1,4 +1,4 @@
-- name: Installation de pod nginx avec des charts helm
+- name: Installation de pod loki avec des charts helm
   block:  
     - name: Ajouter le repository grafana
       command: helm repo add grafana https://grafana.github.io/helm-charts
@@ -8,4 +8,16 @@
 
     - name: Installer le pod loki
       command: helm install my-loki grafana/loki --version 6.27.0
+  when: "'master' in inventory_hostname"
+
+- name: Installation de pod prometheus graphana avec des charts helm
+  block:
+    - name: Creation namespace
+      command: kubectl create namespace monitoring
+
+    - name: installation des pods
+      command: hhelm install prometheus prometheus-community/prometheus --namespace monitoring
+    
+    - name: installation des pods grafana
+      command: helm install my-grafana grafana/grafana
   when: "'master' in inventory_hostname"
