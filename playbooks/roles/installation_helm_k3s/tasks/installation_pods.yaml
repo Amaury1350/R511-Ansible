@@ -9,6 +9,7 @@
     - name: Installer le pod loki
       command: helm install my-loki grafana/loki --version 6.27.0
   when: "'master' in inventory_hostname"
+  become: true
 
 - name: Installation de pod prometheus graphana avec des charts helm
   block:
@@ -30,3 +31,4 @@
     - name: installation des pods grafana
       command: helm install my-grafana grafana/grafana --namespace monitoring
   when: "'master' in inventory_hostname"
+  become: true
