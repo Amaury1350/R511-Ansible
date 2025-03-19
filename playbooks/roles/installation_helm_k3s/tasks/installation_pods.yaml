@@ -14,10 +14,19 @@
   block:
     - name: Creation namespace
       command: kubectl create namespace monitoring
+    
+    - name: Ajouter le repository prometheus
+      command: helm repo add grafana https://grafana.github.io/helm-charts
+
+    - name: Ajouter le repository prometheus
+      command: helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+
+    - name: Mettre à jour les repositories
+      command: helm repo update
 
     - name: installation des pods
-      command: hhelm install prometheus prometheus-community/prometheus --namespace monitoring
+      command: helm install prometheus prometheus-community/prometheus --namespace monitoring
     
     - name: installation des pods grafana
-      command: helm install my-grafana grafana/grafana
+      command: helm install my-grafana grafana/grafana --namespace monitoring
   when: "'master' in inventory_hostname"
